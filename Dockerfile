@@ -42,10 +42,14 @@ COPY . /build
 
 
 # Build
-RUN mvn clean package -Pnative --no-transfer-progress -Dmaven.test.skip=true && java -Djarmode=layertools -jar qa.jar extract
+RUN mvn clean package -Pnative --no-transfer-progress -Dmaven.test.skip=true && java -Djarmode=layertools -jar /build/target/qa.jar extract
 
 
-FROM docker.io/oraclelinux:8-slim
+#FROM docker.io/oraclelinux:8-slim
+FROM public.ecr.aws/lts/ubuntu:22.04
+
+RUN addgroup --system spring && adduser --system spring --ingroup spring
+USER spring:spring
 
 EXPOSE 8080
 
