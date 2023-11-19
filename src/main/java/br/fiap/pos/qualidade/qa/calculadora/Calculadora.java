@@ -1,4 +1,4 @@
-package br.fiap.pos.qualidade.qa;
+package br.fiap.pos.qualidade.qa.calculadora;
 
 
 import java.math.BigInteger;

@@ -1,9 +1,10 @@
-package br.fiap.pos.qualidade.qa;
+package br.fiap.pos.qualidade.qa.calculadora;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.fail;
 
+import br.fiap.pos.qualidade.qa.calculadora.Calculadora;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +20,9 @@ class CalculadoraTest {
     @Test
     void deveSomar() {
         var resultado = calculadora.somar(4, 2);
-        assertEquals(6, resultado);
+        ///assertEquals(6, resultado);
+        /*utilizando o assertj*/
+        assertThat(resultado).isEqualTo(6);
     }
 
     @Test
@@ -44,8 +47,18 @@ class CalculadoraTest {
 
     @Test
     void deveDividir_GerarExcecaoQuandoDividirPorZero() {
-        assertThrows(ArithmeticException.class, ()->{
+
+        /*
+        assertThrows(ArithmeticException.class, () -> {
             calculadora.dividir(4, 0);
-        });
+        });*/
+
+        // utilizando assertj
+        Throwable exception = catchThrowable(() -> calculadora.dividir(4, 0));
+        assertThat(exception)
+                .isInstanceOf(ArithmeticException.class)
+                .hasMessage("/ by zero");
+
+
     }
 }
