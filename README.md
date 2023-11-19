@@ -1,5 +1,9 @@
-GitHub da disciplina: https://github.com/FIAP/POSTECH_SOAT_Qualidade_Software
-Fork: https://github.com/FIAP/POSTECH_SOAT_Qualidade_Software
+
+# GitHub da disciplina
+https://github.com/FIAP/POSTECH_SOAT_Qualidade_Software
+
+# Fork
+https://github.com/FIAP/POSTECH_SOAT_Qualidade_Software
 ### Junit Jupiter
 
 1. classe de tes com o Junit não precisa ser public.
