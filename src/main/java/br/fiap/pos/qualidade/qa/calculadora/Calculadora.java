@@ -1,7 +1,6 @@
 package br.fiap.pos.qualidade.qa.calculadora;
 
 
-import java.math.BigInteger;
 
 public class Calculadora {
 

@@ -9,17 +9,21 @@ import br.fiap.pos.qualidade.qa.mensagem.repository.MensagemRepository;
 
 public abstract class MensagemHelper {
 
+    public static final String XPTO_TEST = "xpto test";
+
+    private MensagemHelper(){}
+
     public static MensagemRequest gerarMensagemRequest() {
         return MensagemRequest.builder()
                 .usuario("joe")
-                .conteudo("xpto test")
+                .conteudo(XPTO_TEST)
                 .build();
     }
 
     public static Mensagem gerarMensagem() {
         return Mensagem.builder()
                 .usuario("joe")
-                .conteudo("xpto test")
+                .conteudo(XPTO_TEST)
                 .build();
     }
 
@@ -28,7 +32,7 @@ public abstract class MensagemHelper {
         return Mensagem.builder()
                 .id(UUID.randomUUID())
                 .usuario("joe")
-                .conteudo("xpto test")
+                .conteudo(XPTO_TEST)
                 .dataCriacao(timestamp)
                 .dataAlteracao(timestamp)
                 .build();

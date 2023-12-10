@@ -24,7 +24,7 @@ class MensagemRepositoryIT {
     void devePermitirCriarTabela() {
         var totalDeRegistros = mensagemRepository.count();
 
-        assertThat(totalDeRegistros).isGreaterThan(0);
+        assertThat(totalDeRegistros).isPositive();
     }
 
     @Test

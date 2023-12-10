@@ -1,6 +1,5 @@
 package br.fiap.pos.qualidade.qa.mensagem.service;
 
-import java.util.List;
 import java.util.UUID;
 
 import br.fiap.pos.qualidade.qa.mensagem.model.Mensagem;
