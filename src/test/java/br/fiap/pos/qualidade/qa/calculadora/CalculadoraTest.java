@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import br.fiap.pos.qualidade.qa.calculadora.Calculadora;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

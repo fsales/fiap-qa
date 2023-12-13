@@ -10,9 +10,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
 @AutoConfigureTestDatabase
+@ActiveProfiles("test")
 @Transactional
 class MensagemRepositoryIT {
 
@@ -37,7 +39,7 @@ class MensagemRepositoryIT {
         mensagem.setId(id);
 
         // ACT
-        var mensagemRecebida =  mensagemRepository.save(mensagem);
+        var mensagemRecebida = mensagemRepository.save(mensagem);
 
         // assert
         assertThat(mensagemRecebida)

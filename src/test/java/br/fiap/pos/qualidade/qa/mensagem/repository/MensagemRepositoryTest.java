@@ -97,7 +97,7 @@ class MensagemRepositoryTest {
     }
 
     @Test
-    void devePermitirListarMensagens(){
+    void devePermitirListarMensagens() {
 
         var mensagem1 = gerarMensagem();
         var mensagem2 = gerarMensagem();
@@ -113,10 +113,11 @@ class MensagemRepositoryTest {
         // assert
         assertThat(mensagemRecebidas).hasSize(2).containsExactlyInAnyOrder(mensagem1, mensagem2);
 
-        verify(mensagemRepository,times(1)).findAll(); // verifica se foi chamado uma vez
+        verify(mensagemRepository, times(1)).findAll(); // verifica se foi chamado uma vez
 
 
     }
+
     private Mensagem gerarMensagem() {
         return Mensagem
                 .builder()

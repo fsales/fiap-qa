@@ -1,1 +1,2 @@
-DELETE FROM mensagem;
+DELETE
+FROM mensagem;

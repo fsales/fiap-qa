@@ -1,10 +1,6 @@
 package br.fiap.pos.qualidade.qa.mensagem.controller;
 
 
-import br.fiap.pos.qualidade.qa.mensagem.dto.MensagemRequest;
-import br.fiap.pos.qualidade.qa.mensagem.handler.GlobalExceptionHandler;
-import br.fiap.pos.qualidade.qa.mensagem.model.Mensagem;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasSize;
@@ -26,10 +22,15 @@ import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.UUID;
 
-
+import br.fiap.pos.qualidade.qa.mensagem.dto.MensagemRequest;
+import br.fiap.pos.qualidade.qa.mensagem.handler.GlobalExceptionHandler;
+import br.fiap.pos.qualidade.qa.mensagem.model.Mensagem;
 import br.fiap.pos.qualidade.qa.mensagem.service.MensagemNotFoundException;
 import br.fiap.pos.qualidade.qa.mensagem.service.MensagemService;
 import br.fiap.pos.qualidade.qa.mensagem.utils.MensagemHelper;
+import com.callibrity.logging.test.LogTracker;
+import com.callibrity.logging.test.LogTrackerStub;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -44,26 +45,26 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.callibrity.logging.test.LogTracker;
-import com.callibrity.logging.test.LogTrackerStub;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 class MensagemControllerTest {
-
-    private MockMvc mockMvc;
-
-//  @RegisterExtension
-//  static MockMvcListener mockMvcListener = new MockMvcListener();
 
     @RegisterExtension
     LogTrackerStub logTracker = LogTrackerStub.create().recordForLevel(LogTracker.LogLevel.INFO)
             .recordForType(MensagemController.class);
 
-
+//  @RegisterExtension
+//  static MockMvcListener mockMvcListener = new MockMvcListener();
+    AutoCloseable openMocks;
+    private MockMvc mockMvc;
     @Mock
     private MensagemService mensagemService;
 
-    AutoCloseable openMocks;
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @BeforeEach
     void setUp() {
@@ -535,14 +536,6 @@ class MensagemControllerTest {
             assertThat(logTracker.contains(
                     "requisição para listar mensagens foi efetuada: Página=0, Tamanho=10")).isTrue();
 
-        }
-    }
-
-    public static String asJsonString(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
     }
 }

@@ -11,7 +11,8 @@ public abstract class MensagemHelper {
 
     public static final String XPTO_TEST = "xpto test";
 
-    private MensagemHelper(){}
+    private MensagemHelper() {
+    }
 
     public static MensagemRequest gerarMensagemRequest() {
         return MensagemRequest.builder()

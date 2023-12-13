@@ -5,22 +5,22 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.UUID;
 
-
 import br.fiap.pos.qualidade.qa.mensagem.model.Mensagem;
 import br.fiap.pos.qualidade.qa.mensagem.repository.MensagemRepository;
 import br.fiap.pos.qualidade.qa.mensagem.utils.MensagemHelper;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
-
-import jakarta.transaction.Transactional;
 
 
 @SpringBootTest
+@ActiveProfiles("test")
 @AutoConfigureTestDatabase
 @Transactional
 class MensagemServiceIT {

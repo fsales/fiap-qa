@@ -14,7 +14,6 @@ import java.util.Collections;
 import java.util.Optional;
 import java.util.UUID;
 
-
 import br.fiap.pos.qualidade.qa.mensagem.model.Mensagem;
 import br.fiap.pos.qualidade.qa.mensagem.repository.MensagemRepository;
 import br.fiap.pos.qualidade.qa.mensagem.utils.MensagemHelper;
@@ -30,10 +29,10 @@ import org.springframework.data.domain.Pageable;
 
 class MensagemServiceTest {
 
+    AutoCloseable openMocks;
     private MensagemService mensagemService;
     @Mock
     private MensagemRepository mensagemRepository;
-    AutoCloseable openMocks;
 
     @BeforeEach
     void setUp() {
